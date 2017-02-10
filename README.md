@@ -18,6 +18,8 @@
 * Xcode ver. 8.0
 * Simulator ver. 10.0
  * iPhone7
+* iOS SDK
+ * Ver. 2.3.4
 
 ※上記内容で動作確認をしています。
 
