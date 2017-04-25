@@ -18,6 +18,8 @@
 * Xcode ver. 8.0
 * Simulator ver. 10.0
  * iPhone7
+* iOS SDK
+ * Ver. 2.3.4
 
 ※上記内容で動作確認をしています。
 
@@ -114,13 +116,6 @@
 
 #### 自動ログイン処理
 ```swift
-//
-//  ViewController.swift
-//  SwiftAutoLoginApp
-//
-//  Created by Natsumo Ikeda on 2016/10/26.
-//  Copyright © 2016年 NIFTY Corporation. All rights reserved.
-//
 import UIKit
 import NCMB
 
