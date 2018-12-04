@@ -3,7 +3,7 @@
 
 ## 概要
 * [ニフクラ mobile backend](https://mbaas.nifcloud.com/)の『会員管理機能』を利用して、ゲームアプリによく見られる「自動ログイン機能」を実装したサンプルプロジェクトです
- * 「自動ログイン機能」とは、ユーザーが会員登録やログイン/ログアウトを意識することなく会員管理を行う機能です。通常の「会員管理機能」を応用して実装することが可能です。
+  * 「自動ログイン機能」とは、ユーザーが会員登録やログイン/ログアウトを意識することなく会員管理を行う機能です。通常の「会員管理機能」を応用して実装することが可能です。
 * 簡単な操作ですぐに [ニフクラ mobile backend](https://mbaas.nifcloud.com/)の機能を体験いただけます★☆
 
 ## ニフクラ mobile backendって何？？
@@ -17,14 +17,13 @@
 * Mac OS X 10.12(Sierra)
 * Xcode ver. 8.0
 * Simulator ver. 10.0
- * iPhone7
-* iOS SDK
- * Ver. 2.3.4
+  * iPhone7
+* iOS SDK v3
 
 ※上記内容で動作確認をしています。
 
 ## 手順
-### 1. [ ニフクラ mobile backend ](https://mbaas.nifcloud.com/)の会員登録・ログインとアプリの新規作成
+### 1. [ ニフクラ mobile backend ](https://mbaas.nifcloud.com/signup.htm)の会員登録・ログインとアプリの新規作成
 * 上記リンクから会員登録（無料）をします。登録ができたらログインをすると下図のように「アプリの新規作成」画面が出るのでアプリを作成します
 
 ![画像3](/readme-img/003.png)
@@ -36,7 +35,7 @@
 
 ### 2. GitHubからサンプルプロジェクトのダウンロード
 * 下記リンクをクリックしてプロジェクトをMacにダウンロードします
- * __[SwiftAutoLoginApp](https://github.com/natsumo/SwiftAutoLoginApp/archive/master.zip)__
+  * __[SwiftAutoLoginApp](https://github.com/NIFCloud-mbaas/SwiftAutoLoginApp/archive/master.zip)__
 
 ### 3. Xcodeでアプリを起動
 * ダウンロードしたフォルダを開き、「`SwiftAutoLoginApp.xcodeproj`」をダブルクリックしてXcode開きます
@@ -56,12 +55,12 @@
 ![画像7](/readme-img/007.png)
 
 * それぞれ`YOUR_NCMB_APPLICATION_KEY`と`YOUR_NCMB_CLIENT_KEY`の部分を書き換えます
- * このとき、ダブルクォーテーション（`"`）を消さないように注意してください！
- * 書き換え終わったら`command + s`キーで保存をします
+  * このとき、ダブルクォーテーション（`"`）を消さないように注意してください！
+  * 書き換え終わったら`command + s`キーで保存をします
 
 ### 6. 動作確認と解説
 * Xcode画面の左上、適当なSimulatorを選択します
- * iPhone7の場合は以下のようになります
+  * iPhone7の場合は以下のようになります
 * 実行ボタン（さんかくの再生マーク）をクリックします
 
 ![画像5](/readme-img/005.png)
@@ -83,8 +82,8 @@
 ![画像11](/readme-img/011.png)
 
 * [ニフクラ mobile backend](https://mbaas.nifcloud.com/)の「ユーザー名/パスワード」を使用して会員管理を行う機能を「自動ログイン機能」へ応用しています
- * ここでは、ユーザー名とパスワードとして、「端末ID（UDID）」を取得し起動時に認証を行うことで自動ログインを実現しています。
- * ダッシュボードの「userName」フィールドで登録された端末IDが確認できます。
+  * ここでは、ユーザー名とパスワードとして、「端末ID（UDID）」を取得し起動時に認証を行うことで自動ログインを実現しています。
+  * ダッシュボードの「userName」フィールドで登録された端末IDが確認できます。
 
 #### ２回目以降起動時
 初回起動時に端末IDで会員情報が登録されているため、２回目以降起動時はログインが行われます
@@ -98,7 +97,7 @@
 ![画像12](/readme-img/012.png)
 
 * [ニフクラ mobile backend](https://mbaas.nifcloud.com/)の会員機能では会員毎に、会員登録やログインを行うたびに更新される「updateDate」というフィールドを持ち、この値を利用して、「最終ログイン」日時の表示をするようにしています
- * 「lastLoginDate」というフィールドに値を移して使用しています
+  * 「lastLoginDate」というフィールドに値を移して使用しています
 
 ![画像13](/readme-img/013.png)
 
@@ -109,7 +108,7 @@
 
 ### SDKのインポートと初期設定
 * ニフクラ mobile backend のドキュメント（クイックスタート）をSwift版に書き換えたドキュメントをご用意していますので、ご活用ください
- * [SwiftでmBaaSを始めよう！(＜CocoaPods＞でuse_framewoks!を有効にした方法)](http://qiita.com/natsumo/items/57d3a4d9be16b0490965)
+  * [SwiftでmBaaSを始めよう！(＜CocoaPods＞でuse_framewoks!を有効にした方法)](http://qiita.com/natsumo/items/57d3a4d9be16b0490965)
 
 ### ロジック
 * `Main.storyboard`でデザインを作成し、`ViewController.swift`にロジックを書いています
@@ -216,4 +215,4 @@ class ViewController: UIViewController {
 ```
 
 * 同じ内容の【Objective-C】版もご用意しています
- * https://github.com/NIFCloud-mbaas/ObjcAutoLoginApp
+  * https://github.com/NIFCloud-mbaas/ObjcAutoLoginApp
