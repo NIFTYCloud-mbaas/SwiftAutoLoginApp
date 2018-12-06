@@ -14,8 +14,8 @@
 ![画像2](/readme-img/002.png)
 
 ## 動作環境
-* Mac OS X 10.12(Sierra)
-* Xcode ver. 8.0
+* Mac OS 10.13.6 (High Sierra)
+* Xcode ver. 10.0
 * Simulator ver. 10.0
   * iPhone7
 * iOS SDK v3
