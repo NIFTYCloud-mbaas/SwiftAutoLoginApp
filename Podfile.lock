@@ -1,21 +1,21 @@
 PODS:
-  - NCMB (2.3.4)
+  - NCMB (1.0.0)
 
 DEPENDENCIES:
-  - NCMB (from `https://github.com/NIFTYCloud-mbaas/ncmb_ios.git`)
+  - NCMB (from `https://github.com/NIFCloud-mbaas/ncmb_swift.git`)
 
 EXTERNAL SOURCES:
   NCMB:
-    :git: https://github.com/NIFTYCloud-mbaas/ncmb_ios.git
+    :git: https://github.com/NIFCloud-mbaas/ncmb_swift.git
 
 CHECKOUT OPTIONS:
   NCMB:
-    :commit: 7a0856b7477a3fde4411f94ae812ffdbbebd4760
-    :git: https://github.com/NIFTYCloud-mbaas/ncmb_ios.git
+    :commit: ddb5466954b26e0ea8f6839e59e759d43261261a
+    :git: https://github.com/NIFCloud-mbaas/ncmb_swift.git
 
 SPEC CHECKSUMS:
-  NCMB: 5666fa1904b01627502071eb99d2d6534af26a94
+  NCMB: e746921c4dcaafae6ac4bd4145815797dfb47a06
 
-PODFILE CHECKSUM: f0fbe220cadd9580dcf99a67a3fcf3d00301f7ec
+PODFILE CHECKSUM: a1aa282ec7e03733396fd86c346bd66cc6670560
 
-COCOAPODS: 1.0.0.beta.5
+COCOAPODS: 1.7.5

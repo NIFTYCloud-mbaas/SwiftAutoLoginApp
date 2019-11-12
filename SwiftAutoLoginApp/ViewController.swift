@@ -27,80 +27,84 @@ class ViewController: UIViewController {
         print("uuid:\(uuid)")
         
         /* mBaaSログイン */
-        NCMBUser.logInWithUsername(inBackground: uuid, password: uuid) { (user, login_error) in
-            if login_error != nil {
-                // ログイン失敗時の処理
-                let login_err : NSError = login_error as! NSError
-                print("ログインに失敗しました。エラーコード：\(login_err.code)")
-                
-                // 初回利用（会員未登録）の場合
-                if login_err.code == 401002 { // 401002：ID/Pass認証エラー
-                    /* mBaaS会員登録 */
-                    let new_user = NCMBUser()
-                    new_user.userName = uuid
-                    new_user.password = uuid
-                    new_user.signUpInBackground({ (signUp_error) in
-                        if signUp_error != nil {
-                            // 会員登録失敗時の処理
-                            let signUp_err = signUp_error as! NSError
-                            print("会員登録に失敗しました。エラーコード：\(signUp_err.code)")
-                        } else {
-                            // 会員登録成功時の処理
-                            print("会員登録に成功しました。")
-                            
-                            self.greetingMessage.text = "はじめまして！"
-                            
-                            /* mBaaSデータの保存 */
-                            let lastLoginDate = new_user.updateDate
-                            new_user.setObject(lastLoginDate, forKey: "lastLoginDate")
-                            new_user.saveInBackground({ (save_error) in
-                                if save_error != nil {
-                                    // 保存失敗時の処理
-                                    let save_err = save_error as! NSError
-                                    print("最終ログイン日時の保存に失敗しました。エラーコード：\(save_err.code)")
-                                    
-                                } else {
-                                    // 保存成功時の処理
-                                    print("最終ログイン日時の保存に成功しました。")
-                                    
-                                }
-                            })
-                            
+        NCMBUser.logInInBackground(userName: uuid!, password: uuid!, callback:{ result in
+            
+            switch result {
+                case .success:
+                    // ログイン成功時の処理
+                    print("ログインに成功しました")
+                    
+                    // 最終ログイン日時取得
+                    let user:NCMBUser = NCMBUser.currentUser!
+                    let updateDate = user["updateDate"]! as Any
+                    
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "yyyy-MM-ddT07:12:02.127Z"//"yyyy/MM/dd HH:mm:ss"
+                    let lastLoginDate = updateDate as! String
+                    
+                    
+                    DispatchQueue.main.sync {
+                        self.greetingMessage.text = "おかえりなさい"
+                        self.lastVisit.text = "最終ログイン"
+                        self.dayAndTime.text = "\(lastLoginDate)"
+                    }
+
+                    // ログイン日時の上書き
+                    user["lastLoginDate"] = lastLoginDate
+                    user.saveInBackground(callback: { updateResult in
+                        switch updateResult {
+                            case .success:
+                                // 保存成功時の処理
+                                print("最終ログイン日時の保存に成功しました。")
+                                break
+                            case let .failure(update_error):
+                                // 保存失敗時の処理
+                                print("最終ログイン日時の保存に失敗しました。エラーコード：\(update_error)")
                         }
+                        
+                    })
+                    break
+            case let .failure(login_error):
+                    // ログイン失敗時の処理
+                    print("ログインに失敗しました。エラーコード：\(login_error)")
+                    // 初回利用（会員未登録）の場合
+                    if (login_error as? NCMBApiError)?.errorCode == .authenticationErrorWithIdPassIncorrect { // 401002：ID/Pass認証エラー
+                        /* mBaaS会員登録 */
+                        let new_user = NCMBUser()
+                        new_user.userName = uuid
+                        new_user.password = uuid
+                        new_user.signUpInBackground(callback: {signupResult in
+                            switch signupResult {
+                                case .success:
+                                    // 会員登録成功時の処理
+                                    print("会員登録に成功しました。")
+                                    
+                                    DispatchQueue.main.sync {
+                                        self.greetingMessage.text = "はじめまして！"
+                                    }
+                                    
+                                    /* mBaaSデータの保存 */
+                                    let lastLoginDate = new_user["updateDate"]! as Date
+                                    new_user["lastLoginDate"] = lastLoginDate
+                                    new_user.saveInBackground(callback: { newUpdateResult in
+                                        switch newUpdateResult {
+                                            case .success:
+                                                // 保存成功時の処理
+                                                print("最終ログイン日時の保存に成功しました。")
+                                                break
+                                            case let .failure(newUpdate_error):
+                                                // 保存失敗時の処理
+                                                print("最終ログイン日時の保存に失敗しました。エラーコード：\(newUpdate_error)")
+                                        }
+                                    })
+                                case let .failure(signup_error):
+                                    // 会員登録失敗時の処理
+                                    print("会員登録に失敗しました。エラーコード：\(signup_error)")
+                            }
                     })
                 }
-                
-            } else {
-                // ログイン成功時の処理
-                print("ログインに成功しました")
-                
-                self.greetingMessage.text = "おかえりなさい"
-                self.lastVisit.text = "最終ログイン"
-                
-                // 最終ログイン日時取得
-                
-                let lastLoginDate = user?.object(forKey: "lastLoginDate") as! Date
-                let formatter = DateFormatter()
-                formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
-                let dateStr = formatter.string(from: lastLoginDate)
-                self.dayAndTime.text = "\(dateStr)"
-                
-                // ログイン日時の上書き
-                let updateDate = user?.updateDate
-                user?.setObject(updateDate, forKey: "lastLoginDate")
-                user?.saveInBackground({ (save_error) in
-                    if save_error != nil {
-                        // 保存失敗時の処理
-                        let save_err = save_error as! NSError
-                        print("最終ログイン日時の保存に失敗しました。エラーコード：\(save_err.code)")
-                        
-                    } else {
-                        // 保存成功時の処理
-                        print("最終ログイン日時の保存に成功しました。")
-                    }
-                })
             }
-        }
+        })
     }
 
     override func didReceiveMemoryWarning() {
