@@ -3,7 +3,7 @@
 //  SwiftAutoLoginApp
 //
 //  Created by Natsumo Ikeda on 2016/10/26.
-//  Copyright 2017 FUJITSU CLOUD TECHNOLOGIES LIMITED All Rights Reserved.
+//  Copyright 2019 FUJITSU CLOUD TECHNOLOGIES LIMITED All Rights Reserved.
 //
 
 import UIKit
