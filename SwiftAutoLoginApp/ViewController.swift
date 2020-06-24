@@ -84,7 +84,7 @@ class ViewController: UIViewController {
                                     }
                                     
                                     /* mBaaSデータの保存 */
-                                    let lastLoginDate = new_user["updateDate"]! as Date
+                                    let lastLoginDate = new_user["createDate"]! as Any
                                     new_user["lastLoginDate"] = lastLoginDate
                                     new_user.saveInBackground(callback: { newUpdateResult in
                                         switch newUpdateResult {
