@@ -14,12 +14,10 @@
 ![画像2](/readme-img/002.png)
 
 ## 動作環境
-* Mac OS X 10.12(Sierra)
-* Xcode ver. 8.0
-* Simulator ver. 10.0
- * iPhone7
-* iOS SDK
- * Ver. 2.3.4
+* Mac OS X 10.15.6(Catalina)
+* Xcode ver. 11.3.1
+* Simulator ver. 13.0
+ * iPhone11
 
 ※上記内容で動作確認をしています。
 
@@ -38,8 +36,14 @@
 * 下記リンクをクリックしてプロジェクトをMacにダウンロードします
  * __[SwiftAutoLoginApp](https://github.com/NIFCLOUD-mbaas/SwiftAutoLoginApp/archive/master.zip)__
 
-### 3. Xcodeでアプリを起動
-* ダウンロードしたフォルダを開き、「`SwiftAutoLoginApp.xcodeproj`」をダブルクリックしてXcode開きます
+### 3.SDKのインポートと初期設定
+
+* ニフクラmobile backend の[ドキュメント（クイックスタート）](https://mbaas.nifcloud.com/doc/current/introduction/quickstart_swift.html)をSwift版に書き換えたドキュメントをご用意していますので、ご活用ください
+ * [SwiftでmBaaSを始めよう！(＜CocoaPods＞でuse_framewoks!を有効にした方法)](http://qiita.com/natsumo/items/57d3a4d9be16b0490965)
+ * [＜CocoaPods＞SwiftでmBaaSを始めよう！](http://qiita.com/natsumo/items/b2d18d87d57300c8d81c)
+
+### 4. Xcodeでアプリを起動
+* ダウンロードしたフォルダを開き、「`SwiftLoginApp.xcworkspace`」をダブルクリックしてXcode開きます
 
 ![画像9](/readme-img/009.png)
 
@@ -49,7 +53,7 @@
 
 ![画像8](/readme-img/008.png)
 
-### 4. APIキーの設定
+### 5. APIキーの設定
 * `AppDelegate.swift`を編集します
 * 先程[ニフクラmobile backend](https://mbaas.nifcloud.com/)のダッシュボード上で確認したAPIキーを貼り付けます
 
