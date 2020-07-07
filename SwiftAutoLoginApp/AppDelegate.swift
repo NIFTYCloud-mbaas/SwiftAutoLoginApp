@@ -3,7 +3,7 @@
 //  SwiftAutoLoginApp
 //
 //  Created by Natsumo Ikeda on 2016/10/26.
-//  Copyright 2017 FUJITSU CLOUD TECHNOLOGIES LIMITED All Rights Reserved.
+//  Copyright 2019 FUJITSU CLOUD TECHNOLOGIES LIMITED All Rights Reserved.
 //
 
 import UIKit
@@ -17,9 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let applicationkey = "YOUR_NCMB_APPLICATIONKEY"
     let clientkey      = "YOUR_NCMB_CLIENTKEY"
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // SDKの初期化
-        NCMB.setApplicationKey(applicationkey, clientKey: clientkey)
+        NCMB.initialize(applicationKey: applicationkey, clientKey: clientkey)
         
         return true
     }
