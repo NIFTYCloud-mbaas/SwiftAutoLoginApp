@@ -196,21 +196,17 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SwiftAutoLoginApp/Pods-SwiftAutoLoginApp-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-SwiftAutoLoginApp/Pods-SwiftAutoLoginApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/NCMB/NCMB.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NCMB.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftAutoLoginApp/Pods-SwiftAutoLoginApp-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SwiftAutoLoginApp/Pods-SwiftAutoLoginApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DDE62B0D8C8CD992C919A78C /* [CP] Check Pods Manifest.lock */ = {
